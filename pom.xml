@@ -7,27 +7,23 @@
     <groupId>com.pluralsight</groupId>
     <artifactId>course-info</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging> <!--no longer retrieving JAR, but now it focuses on sharing files -->
+    <modules> <!--referencing the sub modules -->
+        <module>course-info-repository</module>
+        <module>course-info-cli</module>
+    </modules>
 
     <properties>
         <maven.compiler.release>21</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <slf4j.version>2.0.12</slf4j.version> <!--Easier to manage version number in one place-->
     </properties>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${slf4j.version}</version> <!--Then just call the property name with ${}-->
-        </dependency>
-
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-simple</artifactId>
-            <version>${slf4j.version}</version>
-            <!--Since simple is just a secondary use for api, we want to it to be present and in the path for api to use it-->
-            <scope>runtime</scope>
-        </dependency>
-    </dependencies>
-
+<dependencies>
+    <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter</artifactId>
+        <version>5.10.1</version>
+        <scope>test</scope> <!--only done in test and never in production -->
+    </dependency>
+</dependencies>
 </project>
